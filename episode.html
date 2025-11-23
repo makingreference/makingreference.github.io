@@ -42,7 +42,6 @@
       border-bottom: 2px solid #000;
     }
 
-    /* gray “aura” over the dark background */
     .hero-wrap::before {
       content: "";
       position: absolute;
@@ -57,7 +56,6 @@
       z-index: 0;
     }
 
-    /* make sure the actual content sits above the aura */
     .hero-inner {
       position: relative;
       z-index: 1;
@@ -127,7 +125,6 @@
       border-color: rgba(243, 227, 196, 0.6);
     }
 
-    /* On episode pages, you might want Episodes OR none active */
     .nav-links a.active {
       border-color: rgba(243, 227, 196, 0.6);
     }
@@ -198,17 +195,22 @@
       padding: 10px;
     }
 
+    /* 9:16, 600px tall container */
     .video-inner {
       position: relative;
+      width: 338px;     /* 9:16 width when height is 600 */
+      height: 600px;    /* requested height */
+      max-width: 100%;  /* shrink nicely on small screens */
+      margin: 0 auto;
       overflow: hidden;
       border-radius: 10px;
       background: #000;
-      aspect-ratio: 9 / 16;
-      max-height: 650px;
     }
 
     .video-inner iframe,
     .video-inner video {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       border: 0;
@@ -270,7 +272,7 @@
 </head>
 <body>
 
-  <!-- HERO + NAV WRAPPER (same structure as archive) -->
+  <!-- HERO + NAV WRAPPER -->
   <div class="hero-wrap">
     <div class="hero-inner">
 
@@ -283,7 +285,6 @@
           <div class="brand-text">MAKING REFERENCE · HISTORY MINUTE</div>
         </div>
         <nav class="nav-links">
-          <!-- You can choose which one is "active" depending on how you think about episode pages -->
           <a href="index.html" class="active">Episodes</a>
           <a href="about.html">About</a>
           <a href="follow.html">Follow</a>
@@ -310,31 +311,18 @@
   <main>
     <section class="episode-layout">
 
-     <!-- LEFT: VIDEO -->
-<div class="episode-video-card">
-  <div class="video-inner">
-    <iframe
-      src="https://www.youtube.com/embed/xTF2WU7Z5lM
-      title="History Minute"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
-<script>
-  function getQueryParam(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-  }
-
-  const videoId = getQueryParam("vid");
-
-  if (videoId) {
-    const iframe = document.querySelector(".episode-video-card iframe");
-    iframe.src = `https://www.youtube.com/embed/${videoId}`;
-  }
-</script>
+      <!-- LEFT: VIDEO -->
+      <div class="episode-video-card">
+        <div class="video-inner">
+          <iframe
+            id="episode-frame"
+            src="https://www.youtube.com/embed/xTF2WU7Z5lM"
+            title="History Minute"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
 
       <!-- RIGHT: NOTES / DESCRIPTION -->
       <div class="episode-notes">
@@ -343,11 +331,7 @@
           Dropping into Normandy on D-Day was only the start. This episode condenses Joe Beyrle’s wild war—
           from sabotage missions and capture, to escaping a POW camp and fighting alongside the Red Army.
         </p>
-        <p>
-          Use this space for a short write-up of the story, extra context, or key dates and units the viewer
-          might want to remember after watching.
-        </p>
-
+        <br>
         <div class="back-links">
           <a href="archive.html">&larr; Back to Episode Archive</a>
           <a href="index.html">← Return to Featured Episodes</a>
@@ -363,7 +347,23 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Read ?vid= from URL and override the default video if present
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    const videoId = getQueryParam("vid");
+    if (videoId) {
+      const iframe = document.getElementById("episode-frame");
+      iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    }
   </script>
 
 </body>
 </html>
+
+<a class="episode-card" href="episode.html?vid=xTF2WU7Z5lM">
+  <!-- thumbnail, title, etc. -->
+</a>

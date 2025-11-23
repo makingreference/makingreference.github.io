@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Episode – Making Reference</title>
+  <title>Episode Archive – Making Reference</title>
 
   <!-- Same font family as homepage -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -37,8 +37,8 @@
     .hero-wrap {
       position: relative;
       overflow: hidden;
-      background-color: #050608;
-      padding-bottom: 24px;
+      background-color: #050608; /* deep base */
+      padding-bottom: 40px;
       border-bottom: 2px solid #000;
     }
 
@@ -61,7 +61,7 @@
       z-index: 1;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 18px 18px 10px;
+      padding: 18px 18px 6px;
     }
 
     /* ===== NAV / TITLE BAR ===== */
@@ -121,121 +121,110 @@
       border-bottom: 1px solid transparent;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       border-color: rgba(243, 227, 196, 0.6);
     }
 
-    /* ===== HERO TEXT FOR EPISODE PAGE ===== */
+    /* ===== HERO TEXT (Archive) ===== */
     .hero-copy {
-      margin-top: 10px;
-      padding: 6px 0 6px;
+      margin-top: 16px;
+      padding: 10px 0 0;
     }
 
     .hero-heading {
       font-family: "Bebas Neue", sans-serif;
-      font-size: 34px;
+      font-size: 40px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin: 4px 0 2px;
+      margin: 8px 0 4px;
     }
 
     .hero-sub {
-      font-size: 15px;
+      font-size: 16px;
       max-width: 640px;
       line-height: 1.5;
       color: #D8CCB4;
     }
 
-    /* ===== EPISODE LAYOUT ===== */
+    /* ===== ARCHIVE GRID SECTION ===== */
     main {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 22px 18px 42px;
+      padding: 20px 18px 42px;
       color: var(--cream);
     }
 
-    .episode-layout {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-      flex-wrap: wrap;
+    .archive-intro {
+      margin-bottom: 18px;
+      font-size: 15px;
+      color: #DCCDB2;
+      opacity: 0.9;
     }
 
-    .episode-video-card {
-      flex: 2 1 340px;
-      background-color: #111317;
-      border-radius: 10px;
-      border: 1px solid #292C31;
-      padding: 10px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.65);
+    .episode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px;
     }
 
-.video-inner {
-  position: relative;
-  width: 338px;      /* 9:16 ratio relative to height 600 */
-  height: 600px;     /* requested height */
-  max-width: 100%;   /* keeps it responsive on mobile */
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: 8px;
-  background-color: #000;
-}
-
-.video-inner iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  object-fit: cover;
-}
-
-    .episode-details {
-      flex: 1.4 1 260px;
+    .episode-card {
       background-color: #16181B;
       border-radius: 10px;
+      overflow: hidden;
       border: 1px solid #292C31;
-      padding: 14px 16px 16px;
+      text-decoration: none;
+      color: var(--cream);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
-    .episode-tag {
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #E2D4B5;
-      opacity: 0.9;
-      margin-bottom: 6px;
+    .episode-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+      border-color: var(--accent);
+    }
+
+    /* 9:16, 600px tall thumbnail box */
+    .episode-thumb {
+      position: relative;
+      width: 100%;
+      max-width: 338px;     /* 9:16 when height is 600 */
+      height: 600px;        /* requested height */
+      margin: 0 auto;
+      background-color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .episode-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .episode-content {
+      padding: 12px 14px 16px;
     }
 
     .episode-title {
+      font-size: 20px;
+      margin: 0 0 6px 0;
+      font-weight: 600;
       font-family: "Bebas Neue", sans-serif;
-      font-size: 28px;
-      letter-spacing: 2px;
       text-transform: uppercase;
-      margin: 0 0 8px;
+      letter-spacing: 1px;
     }
 
-    .episode-description {
+    .episode-desc {
       font-size: 14px;
       color: #DCCDB2;
-      line-height: 1.6;
-      margin: 0 0 10px;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 10px;
-      opacity: 0.8;
-    }
-
-    .back-link span {
-      font-size: 16px;
-      line-height: 1;
+      margin: 0;
+      opacity: 0.9;
     }
 
     footer {
@@ -247,12 +236,6 @@
       margin-top: 20px;
     }
 
-    @media (max-width: 800px) {
-      .episode-layout {
-        flex-direction: column;
-      }
-    }
-
     @media (max-width: 700px) {
       .nav-row {
         flex-direction: column;
@@ -262,7 +245,7 @@
         align-self: flex-end;
       }
       .hero-heading {
-        font-size: 28px;
+        font-size: 32px;
       }
     }
   </style>
@@ -285,117 +268,75 @@
           <a href="index.html">Episodes</a>
           <a href="about.html">About</a>
           <a href="follow.html">Follow</a>
-          <a href="archive.html">Archive</a>
+          <a href="archive.html" class="active">Archive</a>
         </nav>
       </div>
 
-      <!-- HERO TEXT FOR EPISODE PAGE -->
+      <!-- HERO TEXT FOR ARCHIVE PAGE -->
       <div class="hero-copy">
-        <h1 class="hero-heading" id="hero-episode-heading">WWII HISTORY MINUTE</h1>
+        <h1 class="hero-heading">WWII EPISODE ARCHIVE</h1>
         <p class="hero-sub">
-          A one-minute story from World War II. Watch the episode, then explore more in the full archive.
+          Every story released so far — collected in one place. Browse the full History Minute library and revisit your favorite
+          one-minute WWII stories.
         </p>
       </div>
 
     </div>
   </div>
 
-  <!-- MAIN EPISODE CONTENT -->
+  <!-- MAIN ARCHIVE GRID -->
   <main>
-    <div class="episode-layout">
-      <!-- LEFT: VIDEO -->
-      <section class="episode-video-card">
-        <div class="video-inner">
-          <iframe
-            id="episode-frame"
-            src=""
-            title="History Minute Episode"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </section>
+    <p class="archive-intro">
+      Tap any thumbnail to open its episode page. New stories are added here as soon as they’re released.
+    </p>
 
-      <!-- RIGHT: DETAILS -->
-      <aside class="episode-details">
-        <a href="archive.html" class="back-link">
-          <span>←</span> Back to archive
-        </a>
-        <div id="episode-tag" class="episode-tag">WWII · Episode</div>
-        <h2 id="episode-title" class="episode-title">Episode Title</h2>
-        <p id="episode-description" class="episode-description">
-          This is where the short episode description will go.
-        </p>
-      </aside>
-    </div>
+    <section class="episode-grid">
+
+      <!-- EPISODE 1 -->
+      <a class="episode-card" href="episode.html?ep=1">
+        <div class="episode-thumb">
+          <img src="images/jumpingjoe.png" alt="Jumping Joe Beyrle">
+        </div>
+        <div class="episode-content">
+          <h2 class="episode-title">Jumping Joe Beyrle</h2>
+          <p class="episode-desc">A paratrooper who escaped German captivity and fought on with the Soviets.</p>
+        </div>
+      </a>
+
+      <!-- EPISODE 2 -->
+      <a class="episode-card" href="episode.html?ep=2">
+        <div class="episode-thumb">
+          <img src="images/tarawa.png" alt="Tarawa">
+        </div>
+        <div class="episode-content">
+          <h2 class="episode-title">Tarawa</h2>
+          <p class="episode-desc">Tarawa – 76 Hours on the Edge of the Pacific.</p>
+        </div>
+      </a>
+
+      <!-- EPISODE 3 -->
+      <a class="episode-card" href="episode.html?ep=3">
+        <div class="episode-thumb">
+          <img src="images/dambusters.png" alt="Operation Chastise">
+        </div>
+        <div class="episode-content">
+          <h2 class="episode-title">Operation Chastise</h2>
+          <p class="episode-desc">Low-level bombers and bouncing bombs take on Germany’s great dams.</p>
+        </div>
+      </a>
+
+      <!-- Add more episodes by copying an episode-card block
+           and updating ep=4, ep=5, etc. to match your EPISODES object -->
+
+    </section>
   </main>
 
   <footer>
     &copy; <span id="year"></span> Making Reference · History Minute
   </footer>
 
-  <!-- ========= JAVASCRIPT LOADER ========= -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ===== MASTER EPISODE LIST =====
-    const EPISODES = {
-      "1": {
-        youtubeId: "xTF2WU7Z5lM",
-        tag: "Airborne · Europe",
-        title: "Jumping Joe Beyrle – The Paratrooper Who Kept Fighting",
-        description: "Paratrooper Joe Beyrle jumps into Nazi-occupied Europe, is captured, escapes, and keeps fighting—eventually joining Soviet forces to keep the war going on his own terms."
-      },
-      "2": {
-        youtubeId: "xTF2WU7Z5lM",  /* TEMP until real Tarawa video is uploaded */
-        tag: "Pacific · Marines",
-        title: "Tarawa – 76 Hours on the Edge of the Pacific",
-        description: "On a tiny atoll in the Gilbert Islands, U.S. Marines fight through surf, reefs, and dug-in defenses in a brutal three-day battle that shocks the American public."
-      },
-      "3": {
-        youtubeId: "xTF2WU7Z5lM",  /* TEMP until real Dambusters video is uploaded */
-        tag: "Bombers · Europe",
-        title: "Operation Chastise – The Dambusters Raid",
-        description: "Flying low at night over occupied Europe, RAF crews use experimental 'bouncing bombs' to attack Germany’s great dams and disrupt the Ruhr’s industrial heart."
-      }
-    };
-
-    // Get ?ep= from the URL
-    function getEpisodeNumber() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get("ep");
-    }
-
-    // Initialize episode page (default to ep=1)
-    (function initEpisodePage() {
-      let ep = getEpisodeNumber() || "1";   // DEFAULT TO EPISODE 1
-      const data = EPISODES[ep];
-
-      const frameEl = document.getElementById("episode-frame");
-      const tagEl = document.getElementById("episode-tag");
-      const titleEl = document.getElementById("episode-title");
-      const descEl = document.getElementById("episode-description");
-      const heroHeadingEl = document.getElementById("hero-episode-heading");
-
-      if (!data) {
-        // Only appears if ?ep=<bad number>
-        frameEl.src = "https://www.youtube.com/embed/xTF2WU7Z5lM";
-        tagEl.textContent = "Episode Not Found";
-        titleEl.textContent = "We couldn’t find that episode.";
-        descEl.textContent = "Please return to the archive and choose a story from the list.";
-        heroHeadingEl.textContent = "Episode Not Found";
-        return;
-      }
-
-      // Set YouTube embed
-      frameEl.src = "https://www.youtube.com/embed/" + data.youtubeId;
-
-      // Set episode text
-      tagEl.textContent = data.tag;
-      titleEl.textContent = data.title;
-      descEl.textContent = data.description;
-      heroHeadingEl.textContent = data.title;
-    })();
   </script>
 
 </body>
