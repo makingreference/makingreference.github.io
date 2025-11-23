@@ -37,7 +37,7 @@
     .hero-wrap {
       position: relative;
       overflow: hidden;
-      background-color: #050608; /* deep base */
+      background-color: #050608;
       padding-bottom: 24px;
       border-bottom: 2px solid #000;
     }
@@ -173,7 +173,7 @@
     .video-inner {
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 */
+      padding-top: 56.25%;
       overflow: hidden;
       border-radius: 8px;
       background-color: #000;
@@ -331,32 +331,30 @@
     &copy; <span id="year"></span> Making Reference · History Minute
   </footer>
 
+  <!-- ========= JAVASCRIPT LOADER ========= -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // ===== MASTER EPISODE LIST =====
     const EPISODES = {
       "1": {
-        youtubeId: "xTF2WU7Z5lM", // Jumping Joe – replace if needed
+        youtubeId: "xTF2WU7Z5lM",
         tag: "Airborne · Europe",
         title: "Jumping Joe Beyrle – The Paratrooper Who Kept Fighting",
         description: "Paratrooper Joe Beyrle jumps into Nazi-occupied Europe, is captured, escapes, and keeps fighting—eventually joining Soviet forces to keep the war going on his own terms."
       },
       "2": {
-        youtubeId: "xTF2WU7Z5lM", // TODO: replace with real YouTube ID
+        youtubeId: "xTF2WU7Z5lM",  /* TEMP until real Tarawa video is uploaded */
         tag: "Pacific · Marines",
         title: "Tarawa – 76 Hours on the Edge of the Pacific",
         description: "On a tiny atoll in the Gilbert Islands, U.S. Marines fight through surf, reefs, and dug-in defenses in a brutal three-day battle that shocks the American public."
       },
       "3": {
-        youtubeId: "xTF2WU7Z5lM", // TODO: replace with real YouTube ID
+        youtubeId: "xTF2WU7Z5lM",  /* TEMP until real Dambusters video is uploaded */
         tag: "Bombers · Europe",
         title: "Operation Chastise – The Dambusters Raid",
         description: "Flying low at night over occupied Europe, RAF crews use experimental 'bouncing bombs' to attack Germany’s great dams and disrupt the Ruhr’s industrial heart."
       }
-      // Add more episodes as you publish them:
-      // "4": { ... },
-      // "5": { ... }
     };
 
     // Get ?ep= from the URL
@@ -365,9 +363,9 @@
       return params.get("ep");
     }
 
-    // Initialize episode page
+    // Initialize episode page (default to ep=1)
     (function initEpisodePage() {
-      const ep = getEpisodeNumber();
+      let ep = getEpisodeNumber() || "1";   // DEFAULT TO EPISODE 1
       const data = EPISODES[ep];
 
       const frameEl = document.getElementById("episode-frame");
@@ -377,7 +375,7 @@
       const heroHeadingEl = document.getElementById("hero-episode-heading");
 
       if (!data) {
-        // Fallback if ep is missing or invalid
+        // Only appears if ?ep=<bad number>
         frameEl.src = "https://www.youtube.com/embed/xTF2WU7Z5lM";
         tagEl.textContent = "Episode Not Found";
         titleEl.textContent = "We couldn’t find that episode.";
@@ -389,7 +387,7 @@
       // Set YouTube embed
       frameEl.src = "https://www.youtube.com/embed/" + data.youtubeId;
 
-      // Set text content
+      // Set episode text
       tagEl.textContent = data.tag;
       titleEl.textContent = data.title;
       descEl.textContent = data.description;
