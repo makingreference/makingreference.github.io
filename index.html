@@ -1,28 +1,700 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Making Reference</title>
+  <meta charset="UTF-8" />
+  <title>Making Reference – WWII Stories Told in 60 Seconds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="History Minute by Making Reference – WWII stories told in 60 seconds. Cinematic, true, and unforgettable." />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #BA4413;
-      color: white;
-      text-align: center;
+    :root {
+      --orange: #a14e28;
+      --orange-dark: #7d3a1e;
+      --navy: #1c2e3a;
+      --cream: #f3e3c4;
+      --bg: #0f1419;
+      --text: #f7f2e8;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 40px;
+      padding: 0;
     }
-    h1 {
-      font-size: 48px;
-      margin-top: 100px;
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050709;
+      color: var(--text);
+      line-height: 1.5;
     }
-    p {
-      font-size: 20px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    header {
+      background: radial-gradient(circle at top, #38424e 0, #050709 55%);
+      color: var(--text);
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 2px solid rgba(243, 227, 196, 0.6);
+    }
+
+    .nav-title {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.85;
+    }
+
+    .nav-links a {
+      padding-bottom: 0.1rem;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(243, 227, 196, 0.6);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      header {
+        padding-bottom: 2.5rem;
+      }
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      color: rgba(243, 227, 196, 0.7);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 2.9rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      max-width: 30rem;
+      color: rgba(247, 242, 232, 0.86);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.35rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      border-color: var(--orange-dark);
+      color: var(--cream);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dark);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(243, 227, 196, 0.45);
+      color: var(--cream);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--cream);
+      background: rgba(243, 227, 196, 0.06);
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      opacity: 0.75;
+    }
+
+    .hero-media {
+      border-radius: 1.25rem;
+      background: radial-gradient(circle at top, #38424e 0, #050709 65%);
+      border: 1px solid rgba(243, 227, 196, 0.18);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      padding: 0.75rem;
+    }
+
+    .hero-media-inner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1rem;
+      background: #11151a;
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .hero-media-inner::before {
+      content: "Trailer coming soon – embed your YouTube or TikTok teaser here.";
+      max-width: 16rem;
+    }
+
+    main {
+      background: #050709;
+    }
+
+    section {
+      padding: 2.75rem 1.25rem;
+    }
+
+    .section-title {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.85rem;
+      color: rgba(243, 227, 196, 0.72);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 1.6rem;
+    }
+
+    .episodes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .episode-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(243, 227, 196, 0.13);
+      background: radial-gradient(circle at top, #1a212a 0, #050709 60%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .episode-thumb {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      background: #2e3a47;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(243, 227, 196, 0.9);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0.75rem;
+    }
+
+    .episode-body {
+      padding: 0.9rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .episode-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(243, 227, 196, 0.7);
+    }
+
+    .episode-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .episode-meta {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .episode-links {
+      margin-top: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    /* Icon + text chips for episode links */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 227, 196, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.68rem;
+      opacity: 0.9;
+      transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+    }
+
+    .chip:hover {
+      background: rgba(243, 227, 196, 0.08);
+      border-color: rgba(243, 227, 196, 0.6);
+      opacity: 1;
+    }
+
+    .chip img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      opacity: 0.95;
+      transition: opacity 0.2s;
+    }
+
+    .chip:hover img {
+      opacity: 1;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-text p {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+      color: rgba(247, 242, 232, 0.9);
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .about-list li::before {
+      content: "• ";
+      color: var(--orange);
+    }
+
+    .links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .link-btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      border: 1px solid rgba(243, 227, 196, 0.3);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+    }
+
+    .link-btn span {
+      opacity: 0.8;
+    }
+
+    .link-btn:hover {
+      background: rgba(243, 227, 196, 0.08);
+      border-color: rgba(243, 227, 196, 0.6);
+      opacity: 1;
+    }
+
+    .link-btn img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      vertical-align: middle;
+      margin-right: 2px; /* Already have gap in flex, this is tiny nudge */
+      opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+
+    .link-btn:hover img {
+      opacity: 1;
+    }
+
+    .subscribe {
+      margin-top: 1.5rem;
+      border-radius: 1rem;
+      border: 1px dashed rgba(243, 227, 196, 0.3);
+      padding: 1.2rem 1.1rem;
+      background: rgba(12, 18, 24, 0.9);
+    }
+
+    .subscribe-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .subscribe-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .subscribe input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.55rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(243, 227, 196, 0.4);
+      background: rgba(5, 8, 11, 0.9);
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .subscribe button {
+      border: none;
+      outline: none;
+    }
+
+    footer {
+      border-top: 1px solid rgba(243, 227, 196, 0.15);
+      padding: 1.25rem 1.25rem 2rem;
+      font-size: 0.8rem;
+      color: rgba(247, 242, 232, 0.72);
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
   </style>
 </head>
 <body>
-  <h1>Making Reference</h1>
-  <p>Website coming soon — WWII in 60 Seconds, History Minute, and more.</p>
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-logo">
+          <!-- TODO: replace with your actual logo path -->
+          <img src="images\History Minute Logo.png" alt="History Minute logo" />
+          <div class="nav-title">Making Reference · History Minute</div>
+        </div>
+        <div class="nav-links">
+          <a href="#episodes">Episodes</a>
+          <a href="about.html">About</a>
+          <a href="follow.html" class="active">Follow</a>
+          <a href="archive.html" class="active">Archive</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div>
+          <h1 class="hero-title">WWII Stories Told in 60 Seconds</h1>
+          <p class="hero-sub">
+            Cinematic, true stories from the Second World War – compressed into one minute.
+            Short enough for your feed. Powerful enough to stay with you.
+          </p>
+          <div class="hero-cta">
+            <!-- TODO: replace # with your real channel URLs -->
+            <a class="btn btn-primary" href="https://www.youtube.com/@makingreference" target="_blank" rel="noopener">Watch on YouTube</a>
+            <a class="btn btn-ghost" href="#episodes">Browse Episodes</a>
+          </div>
+          <p class="hero-note">
+            Also on TikTok, Instagram, and Facebook as <strong>@makingreference</strong>.
+          </p>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-media-inner">
+            <!-- Replace this block with a YouTube embed iframe when your trailer is ready -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- EPISODES -->
+    <section id="episodes">
+      <div class="container">
+        <div class="section-title">Episodes</div>
+        <h2 class="section-heading">Latest WWII History Minutes</h2>
+        <div class="episodes-grid">
+          <!-- EPISODE CARD 1 -->
+          <article class="episode-card">
+<a class="episode-thumb"
+   href="episode.html?vid=xTF2WU7Z5lM">
+  <img src="images/jumpingjoe.png"
+       alt="Thumbnail for Jumping Joe Beyrle"
+       style="width:300px; border-radius:6px;">
+</a>
+            <div class="episode-body">
+              <div class="episode-tag">EUROPE · AIRBORNE</div>
+              <div class="episode-title">Jumping Joe – The Paratrooper Who Fought for Two Armies</div>
+              <div class="episode-links">
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\youtube-sm.png" alt="YouTube">
+                  YouTube
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\facebook-sm.png" alt="Facebook">
+                  Facebook
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\tiktok-sm.png" alt="TikTok">
+                  TikTok
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\instagram-sm.png" alt="Instagram">
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- EPISODE CARD 2 -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+              <img src="images/dambusters.png" alt="The Dambusters – Operation Chastise" style="width:300px; border-radius:6px;">
+            </div>
+            <div class="episode-body">
+              <div class="episode-tag">Air · Europe</div>
+              <div class="episode-title">The Dambusters – Operation Chastise in One Minute</div>
+              <div class="episode-links">
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\youtube-sm.png" alt="YouTube">
+                  YouTube
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\facebook-sm.png" alt="Facebook">
+                  Facebook
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\tiktok-sm.png" alt="TikTok">
+                  TikTok
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\instagram-sm.png" alt="Instagram">
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- EPISODE CARD 3 -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+              <img src="images/tarawa.png" alt="Tarawa – 76 Hours" style="width:300px; border-radius:6px;">
+            </div>
+            <div class="episode-body">
+              <div class="episode-tag">Pacific · Marines</div>
+              <div class="episode-title">Tarawa – 76 Hours on the Edge of the Pacific</div>
+              <div class="episode-links">
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\youtube-sm.png" alt="YouTube">
+                  YouTube
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\facebook-sm.png" alt="Facebook">
+                  Facebook
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\tiktok-sm.png" alt="TikTok">
+                  TikTok
+                </a>
+                <a class="chip" href="#" target="_blank" rel="noopener">
+                  <img src="images\instagram-sm.png" alt="Instagram">
+                  Instagram
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p style="font-size:0.85rem; opacity:0.8;">
+          You’ve already produced more than 50 episodes – this grid can expand into a full
+          archive page later. For now, feature 6–9 of your strongest stories here.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container about-layout">
+        <div class="about-text">
+          <div class="section-title">About</div>
+          <h2 class="section-heading">What is Making Reference?</h2>
+          <p>
+            Making Reference History Minute is about the men and women who risked everything to put stop to the evil and madness of
+            the the powers that wanted to end freedom.  This short-form history project built around one idea:
+            <strong>if you give someone sixty seconds, you can give them a story they never forget.</strong>
+          </p>
+          <p>
+            Each <em>History Minute</em> episode focuses on a single moment, mission, or person from the
+            Second World War. The visuals are styled to try and portray the action and a focus on the life and
+            death human stakes.
+          </p>
+          <p>
+            The series covers hundreds of stories across the European and Pacific theaters, from famous operations
+            to the forgotten moments of the war that deserve to be remembered.
+          </p>
+
+          <ul class="about-list">
+            <li>60–90 second episodes</li>
+            <li>Scripted, narrated, and editedt to bring you elements you may have never heard before.</li>
+            <li>Optimized for TikTok, YouTube Shorts, Instagram Reels, and Facebook</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="section-title">Follow the Project</div>
+          <h2 class="section-heading">Watch, follow, and stay updated</h2>
+
+          <div class="links-grid" id="follow">
+            <!-- TODO: replace with your actual URLs -->
+            <a class="link-btn" href="https://www.youtube.com/@makingreference" target="_blank" rel="noopener">
+              <img src="images\youtube-sm.png" alt="YouTube" />
+              <strong>YouTube</strong> <span>/ Making Reference</span>
+            </a>
+            <a class="link-btn" href="https://www.tiktok.com/@makingreference" target="_blank" rel="noopener">
+              <img src="images\tiktok-sm.png" alt="TikTok" />
+              <strong>TikTok</strong> <span>@makingreference</span>
+            </a>
+            <a class="link-btn" href="https://www.instagram.com/makingreference" target="_blank" rel="noopener">
+              <img src="images\instagram-sm.png" alt="Instagram" />
+              <strong>Instagram</strong> <span>@makingreference</span>
+            </a>
+            <a class="link-btn" href="https://www.facebook.com/MakingReference" target="_blank" rel="noopener">
+              <img src="images\facebook-sm.png" alt="Facebook" />
+              <strong>Facebook</strong> <span>Making Reference</span>
+            </a>
+          </div>
+
+          <div class="subscribe">
+            <div class="subscribe-label">Email updates</div>
+            <p style="font-size:0.86rem; opacity:0.85;">
+              Get new WWII History Minute episodes, behind-the-scenes notes, and occasional
+              deep dives—sent straight to your inbox.
+            </p>
+            <form class="subscribe-row" action="#" method="post">
+              <!-- TODO: hook this up to Buttondown/MailerLite/etc. -->
+              <input type="email" name="email" placeholder="you@example.com" required />
+              <button class="btn btn-primary" type="submit">Notify me</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>&copy; <span id="year"></span> Making Reference · History Minute.</div>
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // simple current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

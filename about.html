@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – History Minute / Making Reference</title>
+
+  <!-- Same font family as your other pages -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #F3E2C4;
+      --accent: #BA4413;
+      --bg-dark: #0D0F12;
+      --bg-mid: #1A1D22;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-dark);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--cream);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ===== TOP GRADIENT WRAPPER (same feel as archive) ===== */
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+      background-color: #050608; /* deep base */
+      padding-bottom: 40px;
+      border-bottom: 2px solid #000;
+    }
+
+    /* gray “aura” over the dark background */
+    .hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 50% -60%,
+        rgba(140, 140, 150, 0.75) 0%,
+        rgba(45, 48, 56, 0.85) 50%,
+        rgba(5, 6, 8, 0.0) 75%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* make sure the actual content sits above the aura */
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 18px 22px;
+    }
+
+    /* ===== NAV / TITLE BAR ===== */
+    .nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 4px 0 10px;
+    }
+
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid rgba(0,0,0,0.6);
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      background-color: #000;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 2px;
+      font-size: 18px;
+      color: var(--cream);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.85;
+    }
+
+    .nav-links a {
+      padding-bottom: 0.1rem;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(243, 227, 196, 0.6);
+    }
+
+    .nav-links a.active {
+      border-color: rgba(243, 227, 196, 0.6);
+    }
+
+    /* ===== HERO TEXT FOR ABOUT PAGE ===== */
+    .hero-copy {
+      margin-top: 16px;
+      padding: 10px 0 0;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 12px;
+      color: rgba(243, 226, 196, 0.75);
+      margin-bottom: 6px;
+    }
+
+    .hero-heading {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 40px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 8px 0 4px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      max-width: 640px;
+      line-height: 1.5;
+      color: #D8CCB4;
+      margin-bottom: 4px;
+    }
+
+    /* ===== ABOUT PAGE MAIN ===== */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 18px 42px;
+      color: var(--cream);
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-main h2 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+
+    .about-main p {
+      font-size: 0.96rem;
+      color: rgba(247, 242, 232, 0.9);
+      margin: 0 0 10px;
+    }
+
+    .about-main ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 6px 0 0;
+      font-size: 0.95rem;
+      color: rgba(247, 242, 232, 0.9);
+    }
+
+    .about-main ul li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    .about-side {
+      background: radial-gradient(circle at top, #1a212a 0, #050709 65%);
+      border-radius: 14px;
+      border: 1px solid rgba(243, 227, 196, 0.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      padding: 16px 16px 18px;
+      font-size: 0.9rem;
+      color: rgba(247, 242, 232, 0.9);
+    }
+
+    .about-side h3 {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin: 0 0 8px;
+      text-transform: uppercase;
+    }
+
+    .about-side p {
+      margin: 0 0 10px;
+    }
+
+    .links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .link-chip {
+      border-radius: 999px;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(243, 227, 196, 0.35);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      opacity: 0.9;
+      transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+    }
+
+    .link-chip:hover {
+      background: rgba(243, 227, 196, 0.08);
+      border-color: rgba(243, 227, 196, 0.7);
+      opacity: 1;
+    }
+
+    .link-chip span {
+      opacity: 0.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #8E8778;
+      border-top: 1px solid #1F1F1F;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .nav-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        align-self: flex-end;
+      }
+      .hero-heading {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO + NAV WRAPPER -->
+  <div class="hero-wrap">
+    <div class="hero-inner">
+
+      <!-- TOP NAV BAR -->
+      <div class="nav-row">
+        <div class="brand-left">
+          <div class="brand-logo">
+            <img src="images/History%20Minute%20Logo.png" alt="History Minute logo">
+          </div>
+          <div class="brand-text">MAKING REFERENCE · HISTORY MINUTE</div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Episodes</a>
+          <a href="about.html" class="active">About</a>
+          <a href="follow.html">Follow</a>
+          <a href="archive.html">Archive</a>
+        </nav>
+      </div>
+
+      <!-- HERO TEXT -->
+      <div class="hero-copy">
+        <div class="hero-kicker">About the Project</div>
+        <h1 class="hero-heading">Making Reference · History Minute</h1>
+        <p class="hero-sub">
+          WWII stories told in about 60 seconds, blending cinematic visuals with true history — made for people who love the details.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN ABOUT CONTENT -->
+  <main>
+    <section class="about-layout">
+
+      <!-- LEFT COLUMN: MAIN TEXT -->
+      <div class="about-main">
+        <h2>What is History Minute?</h2>
+        <p>
+          History Minute is a short–form WWII storytelling project from <strong>Making Reference</strong>. Each episode is a
+          one-minute story built from real events, real people, and real places — condensed just enough to fit a modern attention span
+          without losing the humanity or the stakes.
+        </p>
+        <p>
+          The goal isn’t just to summarize the war. It’s to capture <em>moments</em>: a bridge held a few minutes longer than it should
+          have been, a bomber crew making ice cream at altitude, a paratrooper who refuses to stay dead on paper.
+        </p>
+
+        <h2>How the episodes are made</h2>
+        <p>
+          Each story starts with research — books, articles, veteran accounts, and original documents where possible. From there, the
+          story is written as a tight 60–75 second script, then broken into a sequence of frames designed to feel like a miniature film.
+        </p>
+        <ul>
+          <li>8–10 cinematic frames per story</li>
+          <li>Focus on specific people, units, or moments in time</li>
+          <li>Grounded visuals: uniforms, vehicles, locations, and weather as accurate as possible</li>
+          <li>No “superhero” shots — just human beings in impossible situations</li>
+        </ul><p></p>
+
+        <h2>Why WWII?</h2>
+        <p>
+          World War II is endlessly studied, but still full of corners, side stories, and quiet acts of courage that rarely make it into
+          textbooks. This project exists for the forgotten operations, the “oh, I never knew that” missions, and the tiny decisions that
+          changed the course of huge events.
+        </p>
+      </div>
+
+      <!-- RIGHT COLUMN: SIDE PANEL -->
+      <aside class="about-side">
+        <h3>Where to watch</h3>
+        <p>
+          New episodes are released primarily as vertical video — built for phones, but detailed enough to hold up on a big screen.
+        </p>
+        <div class="links-grid">
+          <a class="link-chip" href="#" target="_blank" rel="noopener">
+              <img src="images\tiktok-sm.png" alt="TikTok" />
+              <span><strong>TikTok</strong></span>
+          </a>
+          <a class="link-chip" href="#" target="_blank" rel="noopener">
+<img src="images\youtube-sm.png" alt="YouTube" />
+              <span><strong>YouTube Shorts</strong></span>
+          </a>
+<a class="link-chip" href="#" target="_blank" rel="noopener">
+<img src="images\facebook-sm.png" alt="Facebook" />
+              <span><strong>Facebook</strong></span>
+          </a>
+            <a class="link-chip" href="#" target="_blank" rel="noopener">
+<img src="images\instagram-sm.png" alt="Instgram" />
+              <span><strong>Instagram</strong></span>
+          </a>
+        </div>
+
+        <h3 style="margin-top: 1.4rem;">Behind Making Reference</h3>
+        <p>
+          Making Reference is a one-person shop: researching, writing, and assembling each story episode by episode. The goal is simple:
+          make history feel close enough that you can almost smell the exhaust, the cordite, the coffee in the tin mug.
+        </p>
+        <p>
+          If you have a family story, a unit, or a specific moment you think deserves an episode, you’re invited to reach out.
+        </p>
+
+        <h3 style="margin-top: 1.4rem;">Get in touch</h3>
+        <p>
+          For suggestions, corrections, or collaboration ideas:
+        </p>
+        <div class="links-grid">
+          <a class="link-chip" href="mailto:makingreference@gmail.com">
+        <img src="images/mail-sm.png" alt="Email" />
+              <span><strong>Email</strong></span>
+          </a>
+ 
+        </div>
+      </aside>
+
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Making Reference · History Minute
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
