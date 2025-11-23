@@ -207,6 +207,20 @@
       display: block;
     }
 
+    /* EPISODE NUMBER BADGE */
+    .episode-number {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #F3E2C4;
+    }
+
     .episode-content {
       padding: 12px 14px 16px;
     }
@@ -295,6 +309,7 @@
       <!-- EPISODE 1 -->
       <a class="episode-card" href="episode.html?ep=1">
         <div class="episode-thumb">
+          <div class="episode-number">EPISODE 1</div>
           <img src="images/jumpingjoe.png" alt="Jumping Joe Beyrle">
         </div>
         <div class="episode-content">
@@ -306,6 +321,7 @@
       <!-- EPISODE 2 -->
       <a class="episode-card" href="episode.html?ep=2">
         <div class="episode-thumb">
+          <div class="episode-number">EPISODE 2</div>
           <img src="images/tarawa.png" alt="Tarawa">
         </div>
         <div class="episode-content">
@@ -317,6 +333,7 @@
       <!-- EPISODE 3 -->
       <a class="episode-card" href="episode.html?ep=3">
         <div class="episode-thumb">
+          <div class="episode-number">EPISODE 3</div>
           <img src="images/dambusters.png" alt="Operation Chastise">
         </div>
         <div class="episode-content">
@@ -326,7 +343,7 @@
       </a>
 
       <!-- Add more episodes by copying an episode-card block
-           and updating ep=4, ep=5, etc. to match your EPISODES object -->
+           and updating EPISODE #, image, text, and ep=4, ep=5, etc. -->
 
     </section>
   </main>
