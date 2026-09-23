@@ -568,12 +568,7 @@
             </a>
           </div>
 
-          <div class="subscribe">
-            <div class="subscribe-label">Email updates</div>
-            <p style="font-size:0.86rem; opacity:0.85;">
-              Get new WWII History Minute episodes, behind-the-scenes notes, and occasional
-              deep dives—sent straight to your inbox.
-            </p>
+             </p>
  <form class="subscribe-row"
       action="https://app.kit.com/forms/9951151/subscriptions"
       method="post">
@@ -581,6 +576,7 @@
   <button class="btn btn-primary" type="submit">JOIN THE LIST</button>
 </form>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -600,5 +596,47 @@
     // simple current year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+const newsletterForm = document.getElementById('newsletter-form');
+const newsletterMessage = document.getElementById('newsletter-message');
+
+newsletterForm.addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  const button = newsletterForm.querySelector('button');
+  const formData = new FormData(newsletterForm);
+
+  button.disabled = true;
+  button.textContent = 'JOINING...';
+
+  try {
+    const response = await fetch(newsletterForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Subscription failed');
+    }
+
+    newsletterForm.style.display = 'none';
+
+    newsletterMessage.innerHTML =
+      '✓ Almost there! Check your email to confirm your subscription.';
+    newsletterMessage.style.display = 'block';
+
+  } catch (error) {
+    newsletterMessage.innerHTML =
+      'Something went wrong. Please try again.';
+    newsletterMessage.style.display = 'block';
+
+    button.disabled = false;
+    button.textContent = 'JOIN THE LIST';
+  }
+});
+</script>
 </body>
 </html>
