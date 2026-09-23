@@ -568,15 +568,33 @@
             </a>
           </div>
 
-             </p>
- <form class="subscribe-row"
-      action="https://app.kit.com/forms/9951151/subscriptions"
-      method="post">
-  <input type="email" name="email_address" placeholder="you@example.com" required />
-  <button class="btn btn-primary" type="submit">JOIN THE LIST</button>
-</form>
-          </div>
-        </div>
+<div class="subscribe">
+  <div class="subscribe-label">Email updates</div>
+
+  <p style="font-size:0.86rem; opacity:0.85;">
+    Get new WWII History Minute episodes, behind-the-scenes notes, and occasional
+    deep dives—sent straight to your inboxX.
+  </p>
+
+  <form class="subscribe-row"
+        id="newsletter-form"
+        action="https://app.kit.com/forms/9951151/subscriptions"
+        method="post">
+
+    <input type="email"
+           name="email_address"
+           placeholder="you@example.com"
+           required />
+
+    <button class="btn btn-primary" type="submit">
+      JOIN THE LIST
+    </button>
+  </form>
+
+  <div id="newsletter-message"
+       style="display:none; font-size:0.86rem; margin-top:10px;">
+  </div>
+</div>
         </div>
       </div>
     </section>
@@ -596,7 +614,7 @@
     // simple current year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script>
+<script>
 const newsletterForm = document.getElementById('newsletter-form');
 const newsletterMessage = document.getElementById('newsletter-message');
 
@@ -637,6 +655,6 @@ newsletterForm.addEventListener('submit', async function(event) {
     button.textContent = 'JOIN THE LIST';
   }
 });
-</script>
+</script>  
 </body>
 </html>
