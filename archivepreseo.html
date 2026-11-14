@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WWII History Minutes – Making Reference</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Browse all Making Reference WWII History Minutes – short stories about the people, battles, missions, and extraordinary moments of World War II."
+  />
+
+  <style>
+    :root {
+      --orange: #a14e28;
+      --orange-dark: #7d3a1e;
+      --navy: #1c2e3a;
+      --cream: #f3e3c4;
+      --bg: #0f1419;
+      --text: #f7f2e8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050709;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    header {
+      background: radial-gradient(circle at top, #38424e 0, #050709 55%);
+      color: var(--text);
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      border: 2px solid rgba(243, 227, 196, 0.6);
+    }
+
+    .nav-title {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.85;
+    }
+
+    .nav-links a {
+      padding-bottom: 0.1rem;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(243, 227, 196, 0.6);
+    }
+
+    .nav-links a.active {
+      border-color: var(--orange);
+      color: var(--cream);
+    }
+
+    /* =========================
+       ARCHIVE HERO
+       ========================= */
+
+    .archive-hero {
+      max-width: 720px;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      color: rgba(243, 227, 196, 0.7);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 2.9rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      max-width: 40rem;
+      color: rgba(247, 242, 232, 0.86);
+    }
+
+    /* =========================
+       MAIN / SECTIONS
+       ========================= */
+
+    main {
+      background: #050709;
+    }
+
+    section {
+      padding: 2.75rem 1.25rem;
+    }
+
+    .section-title {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.85rem;
+      color: rgba(243, 227, 196, 0.72);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-heading {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .archive-intro {
+      max-width: 700px;
+      font-size: 0.9rem;
+      color: rgba(247, 242, 232, 0.78);
+      margin-bottom: 1.8rem;
+    }
+
+    /* =========================
+       EPISODE GRID
+       ========================= */
+
+    .episodes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.6rem;
+  max-width: 720px;
+}
+
+@media (max-width: 600px) {
+  .episodes-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+}
+
+    .episode-card {
+      border-radius: 1rem;
+      border: 1px solid rgba(243, 227, 196, 0.13);
+      background: radial-gradient(circle at top, #1a212a 0, #050709 60%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .episode-thumb {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      background: #2e3a47;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(243, 227, 196, 0.9);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .episode-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .episode-body {
+      padding: 0.9rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .episode-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(243, 227, 196, 0.7);
+    }
+
+    .episode-title {
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+
+    .episode-meta {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .episode-links {
+      margin-top: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--orange);
+      color: #d9784d;
+      background: rgba(161, 78, 40, 0.08);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.7rem;
+      opacity: 1;
+    }
+
+    .chip:hover {
+      background: var(--orange);
+      color: var(--cream);
+      border-color: var(--orange-dark);
+    }
+
+    /* =========================
+       BACK TO HOME BUTTON
+       ========================= */
+
+    .archive-bottom {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.65rem 1.35rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(243, 227, 196, 0.45);
+      color: var(--cream);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--cream);
+      background: rgba(243, 227, 196, 0.06);
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      border-top: 1px solid rgba(243, 227, 196, 0.15);
+      padding: 1.25rem 1.25rem 2rem;
+      font-size: 0.8rem;
+      color: rgba(247, 242, 232, 0.72);
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 768px) {
+      header {
+        padding-bottom: 2.5rem;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER / NAVIGATION
+       ========================= -->
+
+  <header>
+    <div class="container">
+
+      <nav class="nav">
+
+        <a class="nav-logo" href="index.html">
+          <img
+            src="images/History%20Minute%20Logo.png"
+            alt="History Minute logo"
+          />
+          <div class="nav-title">
+            Making Reference · History Minute
+          </div>
+        </a>
+
+      <div class="nav-links">
+  <a href="index.html">Home</a>
+  <a href="archive.html" class="active">All Episodes</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#follow">Follow</a>
+</div>
+      </nav>
+
+      <!-- ARCHIVE INTRO -->
+
+      <div class="archive-hero">
+
+        <div class="hero-kicker">
+          Making Reference · History Minute
+        </div>
+
+        <h1 class="hero-title">
+          WWII History Minutes
+        </h1>
+
+        <p class="hero-sub">
+          Explore the complete collection of Making Reference History Minutes —&nbsp; stories told in about a minute about the people, battles, missions, and
+          extraordinary moments of the Second World War.
+        </p>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       ALL EPISODES
+       ========================= -->
+
+  <main>
+
+    <section id="episodes">
+
+      <div class="container">
+
+        <div class="section-title">
+          All Episodes
+        </div>
+
+        <h2 class="section-heading">
+          The WWII History Minute Collection
+        </h2>
+
+        <p class="archive-intro">
+          Watch each History Minute on your preferred platform.
+          New episodes are added as they are released.
+        </p>
+        <div class="episodes-grid">
+
+          <!-- EPISODE CARD -->  
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1167896782800733" target="_blank" rel="noopener">
+              <img src="images/baloon.png"
+       alt="Japan's Balloon Bombs - The Wind That Killed"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Innovation · Pacific </div>
+              <div class="episode-title">Japan's Balloon Bombs - The Wind That Killed</div>
+              <div class="episode-meta">Japan · 1945</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/wzfnr4G_PB8" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7707287454469868831" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1167896782800733" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DfpP_bYudTB/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          
+          <!-- EPISODE CARD -->  
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1820451829100390" target="_blank" rel="noopener">
+              <img src="images/pycrete.png"
+       alt="Procect Habakkuk - The Ice Aircraft Carrier"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Innovation · Europe </div>
+              <div class="episode-title">Project Habakkuk - The Ice Aircraft Carrier</div>
+              <div class="episode-meta">UK · 1942</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/D5vI0yR3LsA?feature=share" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7706160156609907998" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1820451829100390" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DfZxW-fsmEd/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          <!-- EPISODE CARD -->  
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/2903598020011589" target="_blank" rel="noopener">
+              <img src="images/cornflakes.png"
+       alt="Operation Cornflakes - The Secret Mail War Against Hitler "></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Deception · Europe </div>
+              <div class="episode-title">Operation Cornflakes - The Secret Mail War Against Hitler </div>
+              <div class="episode-meta">US · 1945</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/1N_KFU3y3s8" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7705057242713689374" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/2903598020011589" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DfZxW-fsmEd/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          
+         <!-- EPISODE CARD -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1479623977399508" target="_blank" rel="noopener">
+              <img src="images/polishenigma.png"
+       alt="Polish Enigma — The Mathematicians Who Broke the Unbreakable Code"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Intelligence · Europe </div>
+              <div class="episode-title">Polish Enigma — The Mathematicians Who Broke the Unbreakable Code</div>
+              <div class="episode-meta">Polish Intelligence · 1932</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/sCffnDgA7hM" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7703967007514905887" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1479623977399508" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DfKRVd9petm/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+         <!-- EPISODE CARD -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1353191983413361" target="_blank" rel="noopener">
+              <img src="images/Fortitude.png"
+       alt="Operation Fortitude - The Fake Army That Fooled Hitler Before D-Day"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Deception · Europe </div>
+              <div class="episode-title">Operation Fortitude - The Fake Army That Fooled Hitler Before D-Day</div>
+              <div class="episode-meta">UK · 1944</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/lZ3ir2T2eKs?feature=share" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7702823162139970846" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1353191983413361" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DfKRVd9petm/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          
+          <!-- EPISODE CARD -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1471723518185436" target="_blank" rel="noopener">
+              <img src="images/gunnerside.png"
+       alt="Operation Gunnerside - The Raid on Hitlers Heavy Water"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Sabotage · Europe </div>
+              <div class="episode-title">Operation Gunnerside - The Raid on Hitler's Heavy Water</div>
+              <div class="episode-meta">Norwegian Resistance · 1943</div>
+              <div class="episode-links">
+                <a class="chip" href="https://www.youtube.com/shorts/t42poKqDB_g" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7701467207703858462" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1471723518185436" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DfCfVuVkd0f/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          
+<!-- EPISODE CARD -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1140065995172587" target="_blank" rel="noopener">
+              <img src="images/tarawa.png"
+       alt="Tarawa - 76 Hours in Hell"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">US · Pacific </div>
+              <div class="episode-title">Tarawa - 76 Hours in Hell</div>
+              <div class="episode-meta">Marines · 1943</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/FpUgiUnxl2c" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7700230602427010335" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1140065995172587" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/De4SALBthFw/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          <!-- EPISODE CARD -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1873026607052256" target="_blank" rel="noopener">
+              <img src="images/mincemeat.png"
+       alt="Operation Mincemeat"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">British Intelligence · Europe </div>
+              <div class="episode-title">Operation Mincemeat – The Dead Man Who Fooled Hitler</div>
+              <div class="episode-meta">Royal Navy · 1943</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/_Pn_uThk9zg?feature=share" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7699073816823172383" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1873026607052256" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/reels/DewSr_CvnUF/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          
+          <!-- EPISODE CARD  -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/884908941279037" target="_blank" rel="noopener">
+              <img src="images/ratsoftobruk.png"
+       alt="The Rats of Tobruk"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Army · Africa</div>
+              <div class="episode-title">The Rats of Tobruk -  The Australian Soldiers Who Defied Rommel </div>
+              <div class="episode-meta">Australia · 1941</div>
+              <div class="episode-links">
+                <a class="chip" href="https://www.youtube.com/shorts/TnvMz4vz1Vc" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7698005209150164254" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/884908941279037" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/Deo2CQUp7qM/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          
+          <!-- EPISODE CARD 2 -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1116733111289159" target="_blank" rel="noopener">
+              <img src="images/lostbattalion.png"
+       alt="=The Lost Battalion - The Race to the Rescue"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Army · Europe</div>
+              <div class="episode-title">The Lost Battalion - The Race to the Rescue</div>
+              <div class="episode-meta">US · 1944</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/TRIVjUlUM0s?feature=share" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7696306502042160414" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1116733111289159" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DedEbEVhzto/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+          <!-- EPISODE CARD 2 -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1285700410785709" target="_blank" rel="noopener">
+              <img src="images/westvirginia.png"
+       alt="USS West Virginia - From Pearl Harbor to Victory"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Navy · Pacific</div>
+              <div class="episode-title">USS West Virginia - From Pearl Harbor to Victory</div>
+              <div class="episode-meta">US · 1943</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/zkacpGvuBbM" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7693521868296310046" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1285700410785709" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/DeJxVlCtEpU/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+
+
+                   <!-- ==================================================
+               EPISODE 
+               BEER PIPELINE
+               ================================================== -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/" target="_blank" rel="noopener">
+              <img src="images/beerpipeline.png"
+       alt="The Beer Pipeline – When Spitfires Carried Beer."></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">EUROPE&nbsp;<span style="letter-spacing: 1.792px;">· NORMANDY</span></div>
+              <div class="episode-title">The Beer Pipeline – When Spitfires Carried Beer</div>
+              <div class="episode-meta">RAF · 1944</div>
+              <div class="episode-links">
+                <a class="chip" href="https://www.youtube.com/shorts/qNUzJHVVuMg" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7692087491448392990" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/2280566089460236" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/Dd_yBRFB4rk" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>                  
+                    
+          
+                    <!-- ==================================================
+               EPISODE 
+               PURPLE HEART
+               ================================================== -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1414245680649937" target="_blank" rel="noopener">
+              <img src="images/purpleheart2.png"
+       alt="The Purple Heart: Medals Made for an Invasion That Never Came"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Homefront · Honor</div>
+              <div class="episode-title">The Purple Heart: Medals Made for an Invasion That Never Came</div>
+              <div class="episode-meta">U.S. Military · 1945</div>
+              <div class="episode-links">
+                <a class="chip" href="https://www.youtube.com/shorts/yG2u448O9Lo" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7700391010307788063" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1414245680649937" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/Ddy4-ePOVMo/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>                  
+          
+          <!-- ==================================================
+               EPISODE 4
+               MALTA
+               ================================================== -->
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1304300811593540" target="_blank" rel="noopener">
+              <img src="images/malta2.png"
+       alt="The Seige of Malta"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Air · Europe</div>
+              <div class="episode-title">Malta - The Island Under Siege</div>
+              <div class="episode-meta">RAF · 1943</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/vResMET22XU" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7689223647533272350" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1304300811593540" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/Ddr52sEO7Z2" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>                  
+          
+          <!-- ==================================================
+               EPISODE 2
+               OPERATION CHASTISE
+               ================================================== -->
+
+          <article class="episode-card">
+            <div class="episode-thumb">
+ <a href="https://www.facebook.com/reel/1638227717723036" target="_blank" rel="noopener">
+              <img src="images/chastise-dam-busters2.png"
+       alt="Operation Chastise – The Dambusters Raid"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Air · Europe</div>
+              <div class="episode-title">The Dambusters – Operation Chastise in One Minute</div>
+              <div class="episode-meta">RAF · 1943</div>
+              <div class="episode-links">
+                <a class="chip" href="https://youtube.com/shorts/ADoUuw-m-qU" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7688367958191574302" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/1638227717723036" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/p/Ddl-qmIBCQf/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- ==================================================
+               EPISODE 1
+               JUMPING JOE BEYRLE
+               ================================================== -->
+
+          <article class="episode-card">
+<div class="episode-thumb">
+  <a href="https://www.facebook.com/reel/1618684046615124" target="_blank" rel="noopener">
+  <img src="images/jumpingjoe.3.png"
+       alt="Jumping Joe Beyrle – The Paratrooper Who Kept Fighting"></a>
+</div>
+            <div class="episode-body">
+              <div class="episode-tag">Airborne · Europe</div>
+              <div class="episode-title">Jumping Joe Beyrle – The Paratrooper Who Kept Fighting</div>
+              <div class="episode-meta">US · 1944</div>
+              <div class="episode-links">
+                <a class="chip" href="https://www.youtube.com/watch?v=nDT6eJxMamk" target="_blank" rel="noopener">YouTube</a>
+                <a class="chip" href="https://www.tiktok.com/@makingreference5/video/7688358420289703198" target="_blank" rel="noopener">TikTok</a>
+                <a class="chip" href="https://www.facebook.com/reel/2028846797769989" target="_blank" rel="noopener">Facebook</a>
+                <a class="chip" href="https://www.instagram.com/reels/Ddl4GFbPM0C/" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+
+
+          <!-- ==================================================
+               ADD NEW EPISODES ABOVE THIS LINE
+
+               Copy an entire <article class="episode-card">
+               block and place the newest episode FIRST.
+
+               This keeps the archive in newest-to-oldest order.
+               ================================================== -->
+
+
+        </div>
+
+
+        <div class="archive-bottom">
+
+          <a
+            class="btn btn-ghost"
+            href="index.html"
+          >
+            ← Back to Making Reference
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+       ========================= -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+        &copy; <span id="year"></span>
+        Making Reference · History Minute.
+      </div>
+
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TG49XN4D3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3TG49XN4D3');
+</script>
+</body>
+</html>
